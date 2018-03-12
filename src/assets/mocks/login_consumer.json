@@ -1,0 +1,8 @@
+{
+    "user": {
+        "id": 10,
+        "name": "Bob",
+        "roles": ["consumer"]
+    },
+    "token": "abcdefg12345"
+}

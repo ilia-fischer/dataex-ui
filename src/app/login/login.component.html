@@ -1,0 +1,41 @@
+<div class="login-page d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Data Exchange</h5>
+        <form novalidate (ngSubmit)="submit(f)" #f="ngForm">
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+              [(ngModel)]="username"
+              name="username"
+              class="form-control"
+              id="username"
+              placeholder="Enter username"
+              required >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password"
+              [(ngModel)]="password"
+              name="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter Password"
+              required >
+          </div>
+
+          <div class="text-danger" *ngIf="invalidCredentialsError && !(f.dirty || f.touched)">
+            <p>Invalid username or password.</p>
+          </div>
+
+          <button type="submit"
+            class="btn btn-primary"
+            [disabled]="f.invalid">
+            Sign in
+          </button>
+        </form>
+      </div>
+    </div>
+</div>

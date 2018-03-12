@@ -1,0 +1,24 @@
+<nav class="navbar navbar-dark navbar-expand bg-primary py-1">
+    <div class="navbar-nav ml-auto">
+        <a class="nav-item nav-link py-0" *ngIf="isSignedIn && isConsumer" (click)="goToDatasetPage()">Datasets</a>
+        <a class="nav-item nav-link py-0" *ngIf="isSignedIn && isAdmin" (click)="goToAdminPage()">Administer</a>
+        <a class="nav-item nav-link py-0" *ngIf="isSignedIn" (click)="goToMyAccount()">My Account</a>
+        <a class="nav-item nav-link py-0" *ngIf="isSignedIn" (click)="signOut()">Sign Out</a>
+        <a class="nav-item nav-link py-0" *ngIf="!isSignedIn" (click)="goToLoginPage()">Login</a>
+    </div>
+</nav>
+<nav class="navbar navbar-light navbar-expand bg-white justify-content-between py-4">
+    <div class="navbar-nav">
+        <a class="nav-item mr-auto" (click)="goToDefaultPage()">
+            <div class="site-logo img-responsive" >
+                <span class="sr-only">Thomson Reuters</span>
+            </div>
+        </a>
+    </div>
+    <div class="navbar-nav ml-auto">
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Find datasets" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>

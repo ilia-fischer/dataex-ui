@@ -1,0 +1,158 @@
+[
+    {
+        "name": "DataSet1",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 1.29,
+        "classifications": [
+            "health", "technology"
+        ],
+        "provider": {
+            "id": "1",
+            "name": "Canadian Health Services Inc",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet2",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 0.004,
+        "classifications": [
+            "weather", "USA", "Canada"
+        ],
+        "provider": {
+            "id": "2",
+            "name": "Weather.com",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet3",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 12.10,
+        "classifications": [
+            "weather", "USA", "Canada"
+        ],
+        "provider": {
+            "id": "2",
+            "name": "Weather.com",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet4",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 0.52,
+        "classifications": [
+            "weather", "USA", "Canada"
+        ],
+        "provider": {
+            "id": "2",
+            "name": "Weather.com",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet5",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 5.00,
+        "classifications": [
+            "health", "Canada"
+        ],
+        "provider": {
+            "id": "1",
+            "name": "Canadian Health Services Inc",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet6",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 0.11,
+        "classifications": [
+            "health", "USA"
+        ],
+        "provider": {
+            "id": "4",
+            "name": "American Health Services Inc",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet7",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 7.00,
+        "classifications": [
+            "traffic", "accidents", "Canada", "Toronto"
+        ],
+        "provider": {
+            "id": "1",
+            "name": "City of Toronto",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet8",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 2.99,
+        "classifications": [
+            "crime", "gun", "death", "Canada", "Toronto"
+        ],
+        "provider": {
+            "id": "3",
+            "name": "City of Toronto",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet9",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 4.99,
+        "classifications": [
+            "health", "pollution", "air quality", "Toronto"
+        ],
+        "provider": {
+            "id": "5",
+            "name": "Municipal Measurements Ltd",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet10",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 4.99,
+        "classifications": [
+            "health", "pollution", "air quality", "New York"
+        ],
+        "provider": {
+            "id": "5",
+            "name": "Municipal Measurements Ltd",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet11",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 1.29,
+        "classifications": [
+            "health", "pollution", "air quality", "Vancouver"
+        ],
+        "provider": {
+            "id": "5",
+            "name": "Municipal Measurements Ltd",
+            "roles": ["provider"]
+        }
+    },
+    {
+        "name": "DataSet12",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate ullamcorper nisl, a iaculis dui dignissim vitae. Nam est metus, sodales eu interdum id, luctus.",
+        "price": 1.29,
+        "classifications": [
+            "health", "pollution", "air quality", "Boston"
+        ],
+        "provider": {
+            "id": "5",
+            "name": "Municipal Measurements Ltd",
+            "roles": ["provider"]
+        }
+    }
+]

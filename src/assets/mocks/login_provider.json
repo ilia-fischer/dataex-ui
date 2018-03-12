@@ -1,0 +1,8 @@
+{
+    "user": {
+        "id": 1,
+        "name": "Jane",
+        "roles": ["provider"]
+    },
+    "token": "abcdefg12345"
+}
