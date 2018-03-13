@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: PageService.ADMIN_ROUTE, loadChildren: './admin/admin.module#AdminModule', canActivate: [LoginAuthGuard]},
     { path: PageService.ACCOUNT_ROUTE, loadChildren: './account/account.module#AccountModule', canActivate: [LoginAuthGuard]},
     //Otherwise go home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: PageService.DATASETS_ROUTE }
   ];
 
 @NgModule({
