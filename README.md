@@ -6,7 +6,7 @@ This project was originally generated with [Angular CLI](https://github.com/angu
 
 ## Development
 
-Clone this project. Run `npm install` to install all dependencies. Ensure you have NodeJS installed on your machine.
+Clone this project. Run `npm install` to install all dependencies. Ensure you have NodeJS installed on your machine. This project uses the Angular CLI tool to build and serve development environments. Make sure it is installed globally. `npm install -g @angular/cli`
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
