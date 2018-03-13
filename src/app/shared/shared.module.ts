@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 // Common Models and Services
 import { Dataset } from './dataset.model';
@@ -12,7 +13,8 @@ import { DatasetListviewItemComponent } from './dataset-listview-item/dataset-li
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   declarations: [
     DatasetListviewComponent,

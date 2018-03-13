@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'tdrx-root',
@@ -7,5 +8,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = "Thomson Reuters Data Exchange";
+
+  public constructor(private titleService: Title ) {
+    this.titleService.setTitle( this.title );
+  }
 }

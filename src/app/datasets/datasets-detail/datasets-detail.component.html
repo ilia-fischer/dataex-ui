@@ -1,3 +1,6 @@
-<p>
-  datasets-detail works!
-</p>
+<div *ngIf="dataset!=null && !idNotFound">
+    <h2>{{dataset.name}}</h2>
+</div>
+<div *ngIf="idNotFound">
+    <p class="text-danger">Dataset {{datasetId}} could not be found.</p>
+</div>

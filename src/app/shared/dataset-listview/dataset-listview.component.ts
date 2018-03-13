@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
-import { DatasetsService } from '../dataset.service';
 import { Dataset } from '../dataset.model';
 
 @Component({
@@ -9,13 +8,11 @@ import { Dataset } from '../dataset.model';
   styleUrls: ['./dataset-listview.component.scss']
 })
 export class DatasetListviewComponent implements OnInit {
-  datasets: Dataset[] = [];
+  @Input() datasets: Dataset[] = [];
 
-  constructor(private datasetService: DatasetsService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.datasetService.getAllDatasets()
-      .subscribe((datasets: Dataset[]) => this.datasets = datasets as Dataset[]);
   }
 
 }

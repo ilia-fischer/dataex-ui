@@ -54,23 +54,16 @@ $body-bg: $tr-white;
 $body-color: $tr-dark-gray;
 
 // Navbar
-// $navbar-padding-y: ($spacer / 2);
 $navbar-padding-x: 10%;
-// $navbar-brand-font-size: $font-size-lg;
-// $nav-link-height: $navbar-brand-font-size * $line-height-base;
-// $navbar-brand-height: ($font-size-base * $line-height-base + $nav-link-padding-y * 2);
-// $navbar-brand-padding-y: ($navbar-brand-height - $nav-link-height) / 2;
-// $navbar-toggler-padding-y: 0.25rem;
-// $navbar-toggler-padding-x: 0.75rem;
-// $navbar-toggler-font-size: $font-size-lg;
-// $navbar-toggler-border-radius: $btn-border-radius;
-//$navbar-dark-color: $tr-dark-gray;
-// $navbar-dark-hover-color: rgba($white, 0.75);
-// $navbar-dark-active-color: rgba($white, 1);
-// $navbar-dark-disabled-color: rgba($white, 0.25);
-// $navbar-dark-toggler-border-color: rgba($white, 0.1);
-// $navbar-light-color: rgba($black, 0.5);
-// $navbar-light-hover-color: rgba($black, 0.7);
-// $navbar-light-active-color: rgba($black, 0.9);
-// $navbar-light-disabled-color: rgba($black, 0.3);
-// $navbar-light-toggler-border-color: rgba($black, 0.1);
+
+// Grid
+$grid-columns: 12;
+$grid-gutter-width: 20px;
+
+// Cards
+$card-border-width: 1px;
+$card-border-radius: 0;
+$card-border-color: $gray-200;
+
+//Badges
+$badge-pill-border-radius: 0;

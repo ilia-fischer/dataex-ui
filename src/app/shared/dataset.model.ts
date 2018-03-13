@@ -2,6 +2,7 @@ import { User } from './user.model'
 
 export class Dataset {
     constructor(
+        public id: string,
         public name: string,
         public description: string,
         public price: number,
@@ -14,7 +15,5 @@ export class Dataset {
      or DATASET needs the owner
      */
 
-    get priceString() {
-        return `$${this.price}`
-    }
+
 }
