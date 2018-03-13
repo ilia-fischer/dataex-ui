@@ -1,6 +1,6 @@
 {
     "user": {
-        "id": 12,
+        "id": "12",
         "name": "Mary",
         "roles": ["administrator"]
     },
