@@ -1,12 +1,15 @@
-<div class="card container row">
-  <div class="list-group col-3">
-    <a class="list-group-item list-group-item-action active">Profile</a>
-    <a class="list-group-item list-group-item-action">My Datasets</a>
-    <a class="list-group-item list-group-item-action">My Purchased Datasets</a>
-  </div>
-  <div class="col-9">
-    <router-outlet></router-outlet>
+<div class="card flex-fill m-4">
+  <div class="row flex-fill">
+    <ul class="list-group col-2">
+      <li *ngFor="let item of menuItems"
+        (click)="selectMenuItem(item)"
+        [ngClass]="{'active': item.active}"
+        class="list-group-item list-group-item-action">
+        {{item.name}}
+      </li>
+    </ul>
+    <div class="col-10">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
-
-
