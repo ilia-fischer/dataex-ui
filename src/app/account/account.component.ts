@@ -1,21 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { UserService } from '../core/user.service';
+
 @Component({
   selector: 'trdx-account',
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.scss']
 })
 export class AccountComponent implements OnInit {
-  menuItems = [
-    { name: "Profile", route: "", active: true},
-    { name: "My Datasets", route: "my-datasets", active: false},
-    { name: "My Purchased Datasets", route: "purchased-datasets", active: false}
-  ];
+  menuItems = [];
 
-  constructor(private router: Router, private route: ActivatedRoute) { }
+  constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit() {
+    this.menuItems = [
+      { name: "Profile", route: "", active: true, visible: true},
+      { name: "Provided Datasets", route: "my-datasets", active: false, visible: this.userService.isProvider()},
+      { name: "Purchased Datasets", route: "purchased-datasets", active: false, visible: this.userService.isConsumer()}
+    ];
   }
 
   selectMenuItem(item){

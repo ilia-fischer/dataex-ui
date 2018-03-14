@@ -2,7 +2,7 @@
   <div class="card-body flex-fill">
     <a class="card-title" [routerLink]="['/datasets', dataset.id]">{{dataset.name}}</a>
     <p class="card-text">{{dataset.description}}</p>
-    <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}/call</h6>
     <div class="row">
       <ul class="col-9">
         <li *ngFor="let c of dataset.classifications" class="badge badge-info">{{c}}</li>
