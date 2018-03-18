@@ -1,0 +1,10 @@
+<form class="form-inline" *ngIf="isActive">
+  <input class="form-control mr-sm-2"
+    type="search"
+    placeholder="Find datasets"
+    aria-label="Search"
+    name="query"
+    [ngModel]="query"
+    (ngModelChange)="onChange($event)">
+  <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>

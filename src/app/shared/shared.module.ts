@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 // Common Models and Services
 import { Dataset } from './dataset.model';
@@ -10,22 +12,34 @@ import { DatasetsService } from './dataset.service';
 // Common 'Dumb' Components
 import { DatasetListviewComponent } from './dataset-listview/dataset-listview.component';
 import { DatasetListviewItemComponent } from './dataset-listview-item/dataset-listview-item.component';
+import { PurchaseDatasetModalComponent } from './purchase-dataset-modal/purchase-dataset-modal.component';
+import { UploadDatasetModalComponent } from './upload-dataset-modal/upload-dataset-modal.component';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     DatasetListviewComponent,
-    DatasetListviewItemComponent
+    DatasetListviewItemComponent,
+    PurchaseDatasetModalComponent,
+    UploadDatasetModalComponent
   ],
   exports: [
     DatasetListviewComponent,
-    DatasetListviewItemComponent
+    DatasetListviewItemComponent,
+    PurchaseDatasetModalComponent,
+    UploadDatasetModalComponent
   ],
   providers: [
     DatasetsService
+  ],
+  entryComponents: [
+    PurchaseDatasetModalComponent,
+    UploadDatasetModalComponent
   ]
 })
 export class SharedModule { }

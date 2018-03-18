@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 /* App Core (Singleton) Components, Guards, And Services */
 import { TopNavComponent } from './top-nav/top-nav.component';
@@ -11,6 +12,8 @@ import { AuthenticationService } from './authentication.service';
 import { UserService } from './user.service';
 import { PageService } from './page.service';
 import { LoginAuthGuard } from './guards/login-auth.guard';
+import { GlobalSearchComponent } from './global-search/global-search.component';
+import { GlobalSearchService } from './global-search/global-search.service';
 
 
 @NgModule({
@@ -19,19 +22,23 @@ import { LoginAuthGuard } from './guards/login-auth.guard';
     HttpModule,
     HttpClientModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   declarations: [
-    TopNavComponent
+    TopNavComponent,
+    GlobalSearchComponent
   ],
   exports: [
-    TopNavComponent
+    TopNavComponent,
+    GlobalSearchComponent
   ],
   providers: [
     LoginAuthGuard,
     AuthenticationService,
     UserService,
-    PageService
+    PageService,
+    GlobalSearchService
   ]
 })
 export class CoreModule {

@@ -7,7 +7,7 @@
       <ul class="col-9">
         <li *ngFor="let c of dataset.classifications" class="badge badge-info">{{c}}</li>
       </ul>
-      <button class="col-3 btn btn-primary">Buy</button>
+      <button class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
     </div>
   </div>
 </div>

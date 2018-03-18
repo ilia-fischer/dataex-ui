@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Create New Dataset</h4>
+  <button type="button" (click)="cancel()" class="close pull-right" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form>
+      <div class="form-group">
+        <label for="uploadFormFileInput">File</label>
+        <input id="uploadFormFileInput" class="form-control" type="file" #fileInput name="file" (change)="fileChange(fileInput.files)"/>
+      </div>
+      <div class="form-group" *ngIf="file">
+          <label for="uploadFormNameInput">Name</label>
+          <input type="text" class="form-control" id="uploadFormNameInput" [(ngModel)]="name" name="name" placeholder="File name">
+      </div>
+      <div class="form-group" *ngIf="file">
+          <label for="uploadFormDescriptionInput">Description</label>
+          <textarea class="form-control" id="uploadFormDescriptionInput" [(ngModel)]="description" name="description" rows="3"></textarea>
+      </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" (click)="cancel()" class="btn btn-default" >Cancel</button>
+  <button type="button" (click)="upload()" class="btn btn-primary" >Create Dataset</button>
+</div>
