@@ -46,6 +46,18 @@ export class DatasetsService {
       });
   }
 
+  findDatasets(query: string): Observable<Dataset[]>{
+    return this.http.get(DATASET_URL)
+      .map((response: Response) => {
+        let dsa: Dataset[] = response.json();
+        return dsa.filter( ds => {
+          return ds.name.toLowerCase().includes(query) ||
+            ds.description.toLowerCase().includes(query) ||
+            ds.classifications.find((s) => s.includes(query))
+         } );
+      });
+  }
+
 //   getDatasets(query, facets): Observable<Dataset[]>{
 //     return this.http.get(DATASET_URL)
 //       .map((response: Response) => {

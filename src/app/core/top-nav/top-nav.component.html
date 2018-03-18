@@ -16,9 +16,7 @@
         </a>
     </div>
     <div class="navbar-nav ml-auto">
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Find datasets" aria-label="Search">
-            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        <button class="btn btn-outline-info mr-2" (click)="uploadDataset()" *ngIf="isSignedIn && isProvider">Create Dataset</button>
+        <trdx-global-search></trdx-global-search>
     </div>
 </nav>
