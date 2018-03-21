@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
@@ -14,6 +14,8 @@ import { PageService } from './page.service';
 import { LoginAuthGuard } from './guards/login-auth.guard';
 import { GlobalSearchComponent } from './global-search/global-search.component';
 import { GlobalSearchService } from './global-search/global-search.service';
+import { SettingsService } from './settings.service';
+import { AddTokenInterceptor } from './interceptors/add-token.interceptor'
 
 
 @NgModule({
@@ -38,7 +40,13 @@ import { GlobalSearchService } from './global-search/global-search.service';
     AuthenticationService,
     UserService,
     PageService,
-    GlobalSearchService
+    GlobalSearchService,
+    SettingsService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddTokenInterceptor,
+      multi: true
+    }
   ]
 })
 export class CoreModule {

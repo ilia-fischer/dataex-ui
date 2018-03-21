@@ -10,6 +10,9 @@ Clone this project. Run `npm install` to install all dependencies. Ensure you ha
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+If working with docker toolbox you can specify the docker toolbox environment which points the API to `192.168.99.100`
+`ng serve --environment dockertoolbox`.
+
 ## Build
 
 This code can be packaged into a docker container. The following will run `ng build --prod` and package the dist files onto an NGINX server. To view the UI go to `http://<docker-host>:80`. Docker host will likely be `localhost` on Unix systems / Win10 and `192.168.99.100` if using docker toolbox.
