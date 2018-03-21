@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { HttpClient } from '@angular/common/http';
+import { SettingsService } from './settings.service';
 
 import { User } from './../shared/user.model';
 import { AuthenticationService } from './authentication.service';
@@ -9,15 +11,16 @@ import { AuthenticationService } from './authentication.service';
 @Injectable()
 export class UserService {
     private static readonly USER_KEY = 'user';
-    public static readonly CONSUMER_ROLE: string = "consumer";
-    public static readonly PROVIDER_ROLE: string = "provider";
-    public static readonly ADMIN_ROLE: string = "administrator";
+    private static readonly CURRENT_USER_URI = '/api/auth/me';
+    public static readonly CONSUMER_ROLE: string = "Consumer";
+    public static readonly PROVIDER_ROLE: string = "Provider";
+    public static readonly ADMIN_ROLE: string = "Administrator";
 
     //Do not use user directly in this class ... use getUser()
     user: User = null;
     userSubject = new Subject<User>();
 
-    constructor(private authService: AuthenticationService) { }
+    constructor(private authService: AuthenticationService, private http: HttpClient, private settingsService: SettingsService) { }
 
     getUser(): User{
         if(this.user == null){
@@ -62,6 +65,14 @@ export class UserService {
     signIn(user, pass): Promise<User>{
 
         return this.authService.authenticate(user, pass)
+            .then(() => {
+                return this.http.get(`${this.settingsService.apiUrl()}${UserService.CURRENT_USER_URI}`)
+                    .map((response: Response) => {
+                        console.log(response);
+                        return new User(response['_id'], response['name'], response['email'], [response['role']]);
+                    })
+                    .toPromise();
+            })
             .then((user: User) => {
                 this.setUser(user);
                 return user;
