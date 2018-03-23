@@ -1,5 +1,26 @@
-<div *ngIf="dataset!=null && !idNotFound">
-    <h2>{{dataset.name}}</h2>
+<div *ngIf="dataset!=null && !idNotFound" class="row d-flex dataset-detail">
+    <div class="col-sm-4 flex-fill">
+        <div class="card mt-3 flex-fill">
+            <div class="card-body flex-fill">
+                <a class="card-title">{{dataset.name}}</a>
+                <p class="card-text">{{dataset.description}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}/call</h6>
+                <div class="row">
+                    <ul class="col-9">
+                        <li *ngFor="let c of dataset.categories" class="badge badge-info">{{c}}</li>
+                    </ul>
+                    <button *ngIf="!dataset.isConsumedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 flex-fill">
+        <div class="card mt-3 flex-fill">
+            <div class="card-body flex-fill">
+                <a class="card-title">Related Datasets</a>
+            </div>
+        </div>
+    </div>
 </div>
 <div *ngIf="idNotFound">
     <p class="text-danger">Dataset {{datasetId}} could not be found.</p>

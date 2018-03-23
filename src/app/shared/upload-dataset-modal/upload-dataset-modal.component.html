@@ -5,7 +5,47 @@
   </button>
 </div>
 <div class="modal-body">
-  <form>
+  <!-- Radio Buttons -->
+  <div class="btn-group">
+    <button class="btn btn-outline-info btn-radio" [(ngModel)]="datasetType" btnRadio="PROXY">
+        <div class="radio-proxy img-responsive">
+            <span class="sr-only">Proxy</span>
+        </div>
+        <div>
+          <p>Have DataExchange proxy your API</p>
+        </div>
+    </button>
+    <button class="btn btn-outline-info btn-radio" [(ngModel)]="datasetType" btnRadio="UPLOAD">
+        <div class="radio-upload img-responsive">
+            <span class="sr-only">Upload</span>
+        </div>
+        <div>
+          <p>Upload a Dataset to DataExchange</p>
+        </div>
+    </button>
+  </div>
+  <!-- API Proxy -->
+  <div *ngIf="datasetType === 'PROXY'">
+      <div class="form-group">
+          <label for="proxyFormNameInput">Name</label>
+          <input type="text" class="form-control" id="proxyFormNameInput" [(ngModel)]="name" name="name">
+      </div>
+      <div class="form-group">
+          <label for="proxyFormUrl">Url</label>
+          <input type="url" class="form-control" id="proxyFormUrl" [(ngModel)]="url" name="url">
+      </div>
+      <div class="form-group">
+          <label for="proxyFormPrice">Price</label>
+          <input type="number" class="form-control" id="proxyFormPrice" [(ngModel)]="price" name="price" placeholder="$">
+      </div>
+      <div class="form-group">
+          <label for="proxyFormDescriptionInput">Description</label>
+          <textarea class="form-control" id="proxyFormDescriptionInput" [(ngModel)]="description" name="description" rows="2"></textarea>
+      </div>
+  </div>
+
+  <!-- File Upload -->
+  <form *ngIf="datasetType === 'UPLOAD'">
       <div class="form-group">
         <label for="uploadFormFileInput">File</label>
         <input id="uploadFormFileInput" class="form-control" type="file" #fileInput name="file" (change)="fileChange(fileInput.files)"/>
@@ -15,12 +55,16 @@
           <input type="text" class="form-control" id="uploadFormNameInput" [(ngModel)]="name" name="name" placeholder="File name">
       </div>
       <div class="form-group" *ngIf="file">
+          <label for="uploadFormPrice">Price</label>
+          <input type="number" class="form-control" id="uploadFormPrice" [(ngModel)]="price" name="price" placeholder="$">
+      </div>
+      <div class="form-group" *ngIf="file">
           <label for="uploadFormDescriptionInput">Description</label>
-          <textarea class="form-control" id="uploadFormDescriptionInput" [(ngModel)]="description" name="description" rows="3"></textarea>
+          <textarea class="form-control" id="uploadFormDescriptionInput" [(ngModel)]="description" name="description" rows="2"></textarea>
       </div>
   </form>
 </div>
 <div class="modal-footer">
   <button type="button" (click)="cancel()" class="btn btn-default" >Cancel</button>
-  <button type="button" (click)="upload()" class="btn btn-primary" >Create Dataset</button>
+  <button type="button" (click)="create()" class="btn btn-primary" >Create Dataset</button>
 </div>

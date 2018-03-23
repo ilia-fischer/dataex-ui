@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 // Common Models and Services
 import { Dataset } from './dataset.model';
@@ -20,7 +22,9 @@ import { UploadDatasetModalComponent } from './upload-dataset-modal/upload-datas
     CommonModule,
     RouterModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDropdownModule.forRoot(),
+    ButtonsModule.forRoot()
   ],
   declarations: [
     DatasetListviewComponent,

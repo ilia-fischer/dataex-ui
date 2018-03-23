@@ -31,4 +31,12 @@ export class DatasetsDetailComponent implements OnInit {
       });
   }
 
+  purchaseDataset(){
+    // const initialState = {
+    //   dataset: this.dataset
+    // };
+    // this.bsModalRef = this.modalService.show(PurchaseDatasetModalComponent, {initialState});
+
+  }
+
 }

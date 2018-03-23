@@ -10,13 +10,10 @@ export class Dataset {
         public url: string,
         public notes: string,
         public categories: string[],
+        public isConsumedByCurrentUser: boolean,
+        public isProvidedByCurrentUser: boolean,
+        public consumers: any[] = [],
         public provider: User /* OR just the user id */) {
     }
-
-    /*
-     TODO: either USER needs purchased datasets ...
-     or DATASET needs the owner
-     */
-
 
 }

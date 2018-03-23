@@ -1,13 +1,26 @@
 <div class="modal-header">
-  <h4 class="modal-title pull-left">Purchase {{dataset.name}}</h4>
+  <h4 class="modal-title pull-left">Purchase Dataset</h4>
   <button type="button" (click)="cancel()" class="close pull-right" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<div class="modal-body">
-  <p>Select <i>Buy</i> to purchase {{dataset.name}}. Each time you access the API for this dataset you will be charged ${{dataset.price}}.</p>
+<div class="modal-body card">
+  <div class="card-body">
+    <h5 class="card-title text-primary">{{dataset.name}}</h5>
+    <p class="card-text">{{dataset.description}}</p>
+    <div class="btn-group" dropdown>
+      <button dropdownToggle type="button" class="btn btn-dark dropdown-toggle">
+        {{purchaseModel.text}}<span class="caret"></span>
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li *ngFor="let model of purchaseModels" (click)="selectPurchaseModel(model)" [ngClass]="{'disabled': !model.enabled}" role="menuitem">
+          <a class="dropdown-item" [ngClass]="{'disabled': !model.enabled}">{{model.text}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="modal-footer">
   <button type="button" (click)="cancel()" class="btn btn-default" >Cancel</button>
-  <button type="button" (click)="buy()" class="btn btn-primary" >Buy</button>
+  <button type="button" (click)="purchaseModel.purchaseAction()" [disabled]="!purchaseModel.enabled" class="btn btn-primary" >{{purchaseModel.purchaseActionText}}</button>
 </div>

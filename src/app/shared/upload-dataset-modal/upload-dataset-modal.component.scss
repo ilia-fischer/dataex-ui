@@ -1,0 +1,31 @@
+.btn-radio{
+    max-width: 12rem;
+    padding: 14px;
+    p{
+        word-wrap: break-word;
+        white-space: initial;
+        margin-bottom: 0;
+    }
+}
+
+.btn-group{
+    margin-bottom: 10px;
+}
+
+.radio-proxy{
+    background-image: url("/assets/images/proxy-dataset-2.png");
+    background-position: center center;
+    height: 6rem;
+    width: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.radio-upload{
+    background-image: url("/assets/images/upload-dataset.png");
+    background-position: center center;
+    height: 6rem;
+    width: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+}

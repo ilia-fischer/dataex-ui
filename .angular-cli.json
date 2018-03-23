@@ -27,7 +27,8 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts",
-        "dockertoolbox": "environments/environment.dockertoolbox.ts"
+        "dockertoolbox": "environments/environment.dockertoolbox.ts",
+        "alexvm": "environments/environment.alexvm.ts"
       }
     }
   ],

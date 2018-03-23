@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 import { Dataset } from '../dataset.model';
+import { DatasetsService } from '../dataset.service';
 
 @Component({
   selector: 'modal-content',
@@ -10,11 +12,14 @@ import { Dataset } from '../dataset.model';
   styleUrls: ['./upload-dataset-modal.component.scss']
 })
 export class UploadDatasetModalComponent implements OnInit {
+  datasetType: string = "PROXY";
   name: string = "";
   description: string = "";
+  url: string = "";
+  price: number;
   file: File;
 
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(private router: Router, public bsModalRef: BsModalRef, private datasetService: DatasetsService) { }
 
   ngOnInit() {
   }
@@ -31,7 +36,31 @@ export class UploadDatasetModalComponent implements OnInit {
     }
   }
 
-  upload(){
+  create(){
+    switch(this.datasetType){
+      case "PROXY":
+        this.createProxyDs();
+      break;
+      case "UPLOAD":
+        this.createUploadDs();
+      break;
+    }
+  }
+
+  private createProxyDs(){
+    this.datasetService
+      .createUrlDataset(this.name, this.url, this.description, this.price)
+      .then( (ds: Dataset) =>{
+        console.log(`Created dataset '${ds.name}'`);
+        this.bsModalRef.hide();
+        location.reload();
+      })
+      .catch( err => {
+        console.error(err);
+      });
+  }
+
+  private createUploadDs(){
     console.log(this.file);
     let _formData = new FormData();
     _formData.append("Name", this.name);
