@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AccountComponent } from './account.component';
 import { AccountRoutingModule } from './account-routing.module';
@@ -14,7 +15,8 @@ import { PurchasedDatasetsComponent } from './purchased-datasets/purchased-datas
     CommonModule,
     SharedModule,
     RouterModule,
-    AccountRoutingModule
+    AccountRoutingModule,
+    NgxChartsModule
   ],
   declarations: [
     AccountComponent,
