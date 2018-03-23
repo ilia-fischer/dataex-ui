@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 /* App Core (Singleton) Components, Guards, And Services */
 import { TopNavComponent } from './top-nav/top-nav.component';
@@ -25,6 +26,7 @@ import { AddTokenInterceptor } from './interceptors/add-token.interceptor'
     HttpClientModule,
     RouterModule,
     FormsModule,
+    BrowserAnimationsModule,
     SharedModule
   ],
   declarations: [

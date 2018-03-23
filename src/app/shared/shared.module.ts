@@ -10,6 +10,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { Dataset } from './dataset.model';
 import { User } from './user.model';
 import { DatasetsService } from './dataset.service';
+import { TransactionService } from './transaction.service';
 
 // Common 'Dumb' Components
 import { DatasetListviewComponent } from './dataset-listview/dataset-listview.component';
@@ -39,7 +40,8 @@ import { UploadDatasetModalComponent } from './upload-dataset-modal/upload-datas
     UploadDatasetModalComponent
   ],
   providers: [
-    DatasetsService
+    DatasetsService,
+    TransactionService
   ],
   entryComponents: [
     PurchaseDatasetModalComponent,

@@ -1,3 +1,20 @@
 <p>
-  Hello {{user.name}}!
+  Hello {{user.name}}, {{user.email}}!
 </p>
+<ul>
+  <li *ngFor="let transaction of transactions">{{transaction.datasetId}}</li>
+</ul>
+<ngx-charts-line-chart
+  [view]="view"
+  [results]="multi"
+  [scheme]="colorScheme"
+  legend=true
+  xAxis=true
+  yAxis=true
+  showXAxisLabel=true
+  showYAxisLabel=true
+  xAxisLabel="Country"
+  yAxisLabel="Population"
+  autoScale=true
+  (select)="onChartSelect($event)">
+</ngx-charts-line-chart>

@@ -23,7 +23,7 @@ export class DatasetsService {
   }
 
   private isConsumedByUser(dataset: Dataset, user: User): boolean{
-    return !!dataset.consumers.find((c)=>c.consumerId === user.id);
+    return !!dataset.consumers.find((c)=>c.consumerId === user.email);
   }
 
   private migrateDatasets(datasets): Dataset[]{
