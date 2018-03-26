@@ -46,12 +46,102 @@ $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 
+//TR Fonts
+@font-face {
+    font-family: 'knowledge-italic';
+    src: url('/assets/fonts/knowledge2017-regularitalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-regularitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-regular';
+    src: url('/assets/fonts/knowledge2017-regular-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-medium';
+    src: url('/assets/fonts/knowledge2017-medium-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-medium-italic';
+    src: url('/assets/fonts/knowledge2017-mediumitalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-light-italic';
+    src: url('/assets/fonts/knowledge2017-lightitalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-light';
+    src: url('/assets/fonts/knowledge2017-light-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-bold-italic';
+    src: url('/assets/fonts/knowledge2017-bolditalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-bold';
+    src: url('/assets/fonts/knowledge2017-bold-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-black-italic';
+    src: url('/assets/fonts/knowledge2017-blackitalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-black';
+    src: url('/assets/fonts/knowledge2017-black-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-ultra-light-italic';
+    src: url('/assets/fonts/knowledge2017-ultralightitalic-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-ultralightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'knowledge-ultra-light';
+    src: url('/assets/fonts/knowledge2017-ultralight-webfont.woff2') format('woff2'),
+         url('/assets/fonts/knowledge2017-ultralight-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 // Bootstrap Theme (Generic)
 $theme-colors: (primary: $tr-orange, secondary: $tr-medium-gray, success: $tr-dark-green, info: $tr-light-blue, warning: $yellow, danger: $tr-light-red, light: $tr-muted-gray, dark: $tr-dark-gray);
 $colors: (blue: $tr-light-blue, indigo: $tr-dark-purple, purple: $tr-light-purple, pink: $pink, red: $tr-light-red, orange: $tr-light-orange, yellow: $yellow, green: $tr-light-green, teal: $teal, cyan: $cyan, white: $tr-white, gray: $tr-light-gray,gray-dark: $tr-dark-gray);
 $theme-color-interval: 8%;
 $body-bg: $tr-white;
 $body-color: $tr-dark-gray;
+
+// Fonts
+$font-family-sans-serif: knowledge-regular, Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
 
 // Navbar
 $navbar-padding-x: 10%;

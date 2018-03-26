@@ -15,10 +15,17 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     this.menuItems = [
-      { name: "Profile", route: "", active: true, visible: true},
+      { name: "Profile", route: "", active: false, visible: true},
       { name: "Provided Datasets", route: "my-datasets", active: false, visible: this.userService.isProvider()},
       { name: "Purchased Datasets", route: "purchased-datasets", active: false, visible: this.userService.isConsumer()}
     ];
+
+    this.menuItems.forEach( mi => {
+      let route = mi.route === "" ? "" : `/${mi.route}`;
+      if(this.router.url == `/account${route}`){
+        mi.active = true;
+      }
+    });
   }
 
   selectMenuItem(item){

@@ -1,5 +1,5 @@
-<div class="row d-flex dataset-list">
-  <div *ngFor="let dataset of datasets" class="col-sm-4 flex-fill">
-    <trdx-dataset-listview-item [dataset]="dataset" class="flex-fill"></trdx-dataset-listview-item>
+<div class="dataset-list card-columns">
+  <div *ngFor="let dataset of datasets">
+    <trdx-dataset-listview-item [dataset]="dataset"></trdx-dataset-listview-item>
   </div>
 </div>

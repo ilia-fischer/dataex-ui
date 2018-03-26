@@ -59,6 +59,7 @@ export class PurchaseDatasetModalComponent implements OnInit {
       .subscribe((ds: Dataset) => {
         console.log('Dataset purchased!');
         this.bsModalRef.hide();
+        location.reload();
       },
       (err) => {
         console.error('Error buying dataset.', err);

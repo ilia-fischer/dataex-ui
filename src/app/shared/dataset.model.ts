@@ -12,6 +12,7 @@ export class Dataset {
         public categories: string[],
         public isConsumedByCurrentUser: boolean,
         public isProvidedByCurrentUser: boolean,
+        public publicUrl: string,
         public consumers: any[] = [],
         public provider: User /* OR just the user id */) {
     }

@@ -1,20 +1,113 @@
-<p>
-  Hello {{user.name}}, {{user.email}}!
-</p>
-<ul>
-  <li *ngFor="let transaction of transactions">{{transaction.datasetId}}</li>
-</ul>
-<ngx-charts-line-chart
-  [view]="view"
-  [results]="multi"
-  [scheme]="colorScheme"
-  legend=true
-  xAxis=true
-  yAxis=true
-  showXAxisLabel=true
-  showYAxisLabel=true
-  xAxisLabel="Country"
-  yAxisLabel="Population"
-  autoScale=true
-  (select)="onChartSelect($event)">
-</ngx-charts-line-chart>
+<div class="card-deck">
+  <!-- Profile -->
+  <div class="card">
+      <div class="card-body media">
+        <img class="mr-3" src="/assets/images/default-profile-sm.png" alt="Profile image">
+        <div class="media-body">
+          <h5 class="mt-0" class="user-name">{{user.name}}</h5>
+          <span class="user-email">{{user.email}}</span>
+        </div>
+      </div>
+    </div>
+
+  <!-- Balance -->
+  <div class="card">
+    <div class="card-body">
+      <span class="card-title profile-balance">Balance</span>
+      <span class="card-title profile-balance profile-balance-number text-primary">${{user.balance || 0}}</span>
+    </div>
+  </div>
+</div>
+
+<hr class="col-12">
+
+<!-- Charts -->
+<div class="card-columns">
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Recent Transactions</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Dataset</th>
+            <th scope="col">Consumer</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of recentTransactions">
+            <td>{{transaction.datasetId}}</td>
+            <td>{{transaction.consumer.consumerId}}</td>
+            <td>{{transaction.date | date:'short'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Transactions per Dataset</h5>
+      <ngx-charts-line-chart
+        [results]="timeSeriesNumberTransactionsPerDataset"
+        legend=true
+        xAxis=true
+        yAxis=true
+        showXAxisLabel=true
+        showYAxisLabel=true
+        xAxisLabel="Day"
+        yAxisLabel="Number of Transactions"
+        autoScale=true
+        (select)="onChartSelect($event)">
+      </ngx-charts-line-chart>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Transactions per Dataset</h5>
+      <ngx-charts-bar-vertical
+        [results]="numberOfTransactionsPerDataset"
+        legend=true
+        xAxis=true
+        yAxis=true
+        showXAxisLabel=true
+        showYAxisLabel=true
+        xAxisLabel="Dataset ID"
+        yAxisLabel="Number of Transactions"
+        autoScale=true
+        (select)="onChartSelect($event)">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Transactions per Consumer</h5>
+      <ngx-charts-advanced-pie-chart
+        [results]="numberOfTransactionsPerUser"
+        (select)="onSelect($event)">
+      </ngx-charts-advanced-pie-chart>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Transactions and Consumers per Dataset</h5>
+      <ngx-charts-bubble-chart
+        [results]="timeSeriesAggregateTransactionsNumConsumerNumDataset"
+        (select)="onSelect($event)"
+        autoScale=true
+        legend=true
+        xAxis=true
+        yAxis=true
+        showXAxisLabel=true
+        showYAxisLabel=true
+        xAxisLabel="Date"
+        yAxisLabel="Number of Transactions">
+      </ngx-charts-bubble-chart>
+    </div>
+  </div>
+
+</div>
