@@ -22,7 +22,6 @@
             <div *ngIf="dataset.categories.length!=0">
               <ngx-charts-bar-horizontal
                 [view]="view"
-                [scheme]="colorScheme"
                 [results]="single"
                 xAxis=true
                 yAxis=true
@@ -48,7 +47,6 @@
               autoScale=true
               [links]="graph.links"
               [nodes]="graph.nodes"
-              [scheme]="colorScheme"
               [legend]="showLegend"
               (select)="onGraphSelect($event)">
             </ngx-charts-force-directed-graph>
@@ -63,7 +61,6 @@
           <div *ngIf="relationsTreeMap.length!=0">
             <ngx-charts-tree-map
               [view]="view"
-              [scheme]="colorScheme"
               [results]="relationsTreeMap"
               legend=true
               (select)="onSelectTreeMap($event)">
