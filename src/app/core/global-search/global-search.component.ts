@@ -20,7 +20,7 @@ export class GlobalSearchComponent implements OnInit, OnDestroy {
      * This is a hack.
      * Problem: we want the search UI to only be visible when there are subscribers on
      *    globalSearchService. globalSearchService.isActive() will return this but not as
-     *    an Observable. You can use Observer.of/from to wrap the subject.obervers array into
+     *    an Observable. You can use Observer.of/from to wrap the subject.observers array into
      *    into an Observable but there is still no change detection. For POC sake
      *    I just do this interval hack to get the same idea. Need a better way if this POC is
      *    ever taken beyond a demo. Note: the interval code is in the component rather than the service
@@ -29,6 +29,17 @@ export class GlobalSearchComponent implements OnInit, OnDestroy {
     this.intervalSubscription = interval(200).subscribe(() => {
       this.isActive = this.globalSearchService.isActive();
     });
+
+    /*
+     * This is for the requirement of the search UI updating if another page makes the change
+     * itself (like datasets setting the search from the url parameter)
+     */
+    this.globalSearchService.queryObservable()
+      .subscribe( (_query :string) => {
+        if(this.query != _query){
+          this.query = _query;
+        }
+      });
   }
 
   onChange(newVal){
