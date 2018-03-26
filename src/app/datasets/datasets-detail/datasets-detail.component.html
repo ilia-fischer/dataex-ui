@@ -19,6 +19,23 @@
             <div class="card-body flex-fill">
                 <a class="card-title">Related Datasets</a>
             </div>
+            <div *ngIf="dataset.categories.length!=0">
+              <ngx-charts-bar-horizontal
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="single"
+                gradient=true
+                xAxis=true
+                yAxis=true
+                showXAxisLabel=true
+                showYAxisLabel=true
+                xAxisLabel="Datasets"
+                yAxisLabel="Category"
+                autoScale=true
+                [xAxisTickFormatting]="xAxisTickFormatting"
+                (select)="onChartSelect($event)">
+              </ngx-charts-bar-horizontal>
+            </div>
         </div>
     </div>
 </div>
