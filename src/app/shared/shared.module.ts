@@ -13,6 +13,7 @@ import { User } from './user.model';
 import { DatasetsService } from './dataset.service';
 import { TransactionService } from './transaction.service';
 import { AnalyticsService } from './analytics.service';
+import { UsersService } from './users.service';
 
 // Common 'Dumb' Components
 import { DatasetListviewComponent } from './dataset-listview/dataset-listview.component';
@@ -57,7 +58,8 @@ import { TransactionsTimeseriesLineGraphComponent } from './transactions-timeser
   providers: [
     DatasetsService,
     TransactionService,
-    AnalyticsService
+    AnalyticsService,
+    UsersService
   ],
   entryComponents: [
     PurchaseDatasetModalComponent,

@@ -7,7 +7,10 @@ import { SettingsService } from './settings.service';
 import { User } from './../shared/user.model';
 import { AuthenticationService } from './authentication.service';
 
-
+/*
+ * This service represents the singleton CURRENT USER.
+ * For listing users and other 'users' api interfacing see shared/users.service
+ */
 @Injectable()
 export class UserService {
     private static readonly USER_KEY = 'user';
