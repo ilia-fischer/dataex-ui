@@ -30,6 +30,7 @@ export class DatasetsService {
     const user = this.userService.getUser();
     datasets.forEach((d: Dataset) => {
       d.isConsumedByCurrentUser = this.isConsumedByUser(d, user);
+      d.publicUrl = `${this.settingsService.apiUrl()}/dataaccess/proxy/${d._id}`;
     });
     return datasets;
   }
@@ -37,6 +38,7 @@ export class DatasetsService {
   private migrateDataset(dataset): Dataset{
     const user = this.userService.getUser();
     dataset.isConsumedByCurrentUser = this.isConsumedByUser(dataset, user);
+    dataset.publicUrl = `${this.settingsService.apiUrl()}/dataaccess/proxy/${dataset._id}`;
     return dataset;
   }
 

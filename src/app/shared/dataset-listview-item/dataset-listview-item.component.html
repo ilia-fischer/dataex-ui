@@ -1,5 +1,5 @@
-<div class="card mt-3 flex-fill">
-  <div class="card-body flex-fill">
+<div class="card mt-3">
+  <div class="card-body">
     <a class="card-title" [routerLink]="['/datasets', dataset._id]">{{dataset.name}}</a>
     <p class="card-text">{{dataset.description}}</p>
     <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}/call</h6>
@@ -9,5 +9,6 @@
       </ul>
       <button *ngIf="!dataset.isConsumedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
     </div>
+    <p class="dataset-url" *ngIf="dataset.isConsumedByCurrentUser">{{dataset.publicUrl}}</p>
   </div>
 </div>

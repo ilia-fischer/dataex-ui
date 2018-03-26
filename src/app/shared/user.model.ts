@@ -3,7 +3,8 @@ export class User {
         public id: string,
         public name: string,
         public email: string,
-        public roles: string[]
+        public roles: string[],
+        public balance: number
         //Company, Anything else?
     ) {
 

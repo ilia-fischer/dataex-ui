@@ -3,7 +3,7 @@ export class Transaction {
         public datasetId: string,
         public date: Date,
         public consumer: {
-            consumerId: String
+            consumerId: string
         }){
     }
 
