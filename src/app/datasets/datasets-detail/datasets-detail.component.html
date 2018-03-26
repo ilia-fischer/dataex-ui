@@ -17,26 +17,59 @@
     <div class="col-sm-8 flex-fill">
         <div class="card mt-3 flex-fill">
             <div class="card-body flex-fill">
-                <a class="card-title">Related Datasets</a>
+                <a class="card-title">Related Categories</a>
             </div>
             <div *ngIf="dataset.categories.length!=0">
               <ngx-charts-bar-horizontal
                 [view]="view"
                 [scheme]="colorScheme"
                 [results]="single"
-                gradient=true
                 xAxis=true
                 yAxis=true
                 showXAxisLabel=true
                 showYAxisLabel=true
-                xAxisLabel="Datasets"
+                xAxisLabel="Number of Datasets"
                 yAxisLabel="Category"
                 autoScale=true
+                [showGridLines]=false
                 [xAxisTickFormatting]="xAxisTickFormatting"
                 (select)="onChartSelect($event)">
               </ngx-charts-bar-horizontal>
             </div>
         </div>
+    </div>
+    <div class="col-sm-4 flex-fill">
+      <div class="card mt-3 flex-fill">
+        <div class="card-body flex-fill">
+            <a class="card-title">Relations Overview</a>
+        </div>
+        <div class="chart-container">
+          <ngx-charts-force-directed-graph
+              autoScale=true
+              [links]="graph.links"
+              [nodes]="graph.nodes"
+              [scheme]="colorScheme"
+              [legend]="showLegend"
+              (select)="onGraphSelect($event)">
+            </ngx-charts-force-directed-graph>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8 flex-fill">
+      <div class="card mt-3 flex-fill">
+          <div class="card-body flex-fill">
+              <a class="card-title">Related Datasets</a>
+          </div>
+          <div *ngIf="relationsTreeMap.length!=0">
+            <ngx-charts-tree-map
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="relationsTreeMap"
+              legend=true
+              (select)="onSelectTreeMap($event)">
+            </ngx-charts-tree-map>
+          </div>
+      </div>
     </div>
 </div>
 <div *ngIf="idNotFound">
