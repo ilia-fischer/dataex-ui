@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { DatasetsComponent } from './datasets.component';
 import { DatasetsRoutingModule } from './datasets-routing.module';
@@ -11,7 +12,8 @@ import { DatasetsDetailComponent } from './datasets-detail/datasets-detail.compo
     imports: [
         CommonModule,
         SharedModule,
-        DatasetsRoutingModule
+        DatasetsRoutingModule,
+        NgxChartsModule
     ],
     declarations: [
         DatasetsComponent,
