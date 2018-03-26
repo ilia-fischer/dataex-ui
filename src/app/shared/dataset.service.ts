@@ -73,9 +73,9 @@ export class DatasetsService {
     return this.getAllDatasets()
       .map((datasets: Dataset[]) => {
           return datasets.filter( ds => {
-            return ds.name.toLowerCase().includes(query) ||
-              ds.description.toLowerCase().includes(query) ||
-              ds.categories.find((s) => s.includes(query))
+            return (ds.name || "").toLowerCase().includes(query) ||
+              (ds.description || "").toLowerCase().includes(query) ||
+              (ds.categories || []).find((s) => s.includes(query))
           } );
         });
   }
