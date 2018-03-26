@@ -26,10 +26,15 @@ export class DatasetsService {
     return !!dataset.consumers.find((c)=>c.consumerId === user.email);
   }
 
+  private isProvidedByUser(dataset: Dataset, user: User): boolean{
+    return dataset.provider && dataset.provider['providerId'] === user.email;
+  }
+
   private migrateDatasets(datasets): Dataset[]{
     const user = this.userService.getUser();
     datasets.forEach((d: Dataset) => {
       d.isConsumedByCurrentUser = this.isConsumedByUser(d, user);
+      d.isProvidedByCurrentUser = this.isProvidedByUser(d, user);
       d.publicUrl = `${this.settingsService.apiUrl()}/dataaccess/proxy/${d._id}`;
     });
     return datasets;
@@ -38,6 +43,7 @@ export class DatasetsService {
   private migrateDataset(dataset): Dataset{
     const user = this.userService.getUser();
     dataset.isConsumedByCurrentUser = this.isConsumedByUser(dataset, user);
+    dataset.isProvidedByCurrentUser = this.isProvidedByUser(dataset, user);
     dataset.publicUrl = `${this.settingsService.apiUrl()}/dataaccess/proxy/${dataset._id}`;
     return dataset;
   }
@@ -53,7 +59,8 @@ export class DatasetsService {
   }
 
   getProvidedDatasets(user: User): Observable<Dataset[]>{
-    return this.http.get<Dataset[]>(`${this.getBaseUrl()}?provider=${encodeURIComponent(user.email)}`);
+    return this.http.get<Dataset[]>(`${this.getBaseUrl()}?provider=${encodeURIComponent(user.email)}`)
+      .map(this.migrateDatasets.bind(this));
   }
 
   purchaseDataset(dataset: Dataset): Observable<Dataset>{
