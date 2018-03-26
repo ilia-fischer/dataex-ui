@@ -27,68 +27,40 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Recent Transactions</h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Dataset</th>
-            <th scope="col">Consumer</th>
-            <th scope="col">Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let transaction of recentTransactions">
-            <td>{{transaction.datasetId}}</td>
-            <td>{{transaction.consumer.consumerId}}</td>
-            <td>{{transaction.date | date:'short'}}</td>
-          </tr>
-        </tbody>
-      </table>
+      <trdx-transactions-table
+        [transactions]="recentTransactions">
+      </trdx-transactions-table>
+
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Transactions per Dataset</h5>
-      <ngx-charts-line-chart
-        [results]="timeSeriesNumberTransactionsPerDataset"
-        legend=true
-        xAxis=true
-        yAxis=true
-        showXAxisLabel=true
-        showYAxisLabel=true
-        xAxisLabel="Day"
-        yAxisLabel="Number of Transactions"
-        autoScale=true
-        (select)="onChartSelect($event)">
-      </ngx-charts-line-chart>
+      <trdx-transactions-timeseries-line-graph
+        [transactions]="transactions"
+        aggregateBy="dataset">
+      </trdx-transactions-timeseries-line-graph>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Transactions per Dataset</h5>
-      <ngx-charts-bar-vertical
-        [results]="numberOfTransactionsPerDataset"
-        legend=true
-        xAxis=true
-        yAxis=true
-        showXAxisLabel=true
-        showYAxisLabel=true
-        xAxisLabel="Dataset ID"
-        yAxisLabel="Number of Transactions"
-        autoScale=true
-        (select)="onChartSelect($event)">
-      </ngx-charts-bar-vertical>
+      <trdx-transactions-bar-graph
+        [transactions]="transactions"
+        aggregateBy="dataset">
+      </trdx-transactions-bar-graph>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Transactions per Consumer</h5>
-      <ngx-charts-advanced-pie-chart
-        [results]="numberOfTransactionsPerUser"
-        (select)="onSelect($event)">
-      </ngx-charts-advanced-pie-chart>
+      <trdx-transactions-advanced-pie-chart
+        [transactions]="transactions"
+        aggregateBy="consumer">
+      </trdx-transactions-advanced-pie-chart>
     </div>
   </div>
 
@@ -97,7 +69,6 @@
       <h5 class="card-title">Transactions and Consumers per Dataset</h5>
       <ngx-charts-bubble-chart
         [results]="timeSeriesAggregateTransactionsNumConsumerNumDataset"
-        (select)="onSelect($event)"
         autoScale=true
         legend=true
         xAxis=true

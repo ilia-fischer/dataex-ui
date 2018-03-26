@@ -18,7 +18,8 @@ export class GlobalSearchService {
   }
 
   isActive(): boolean{
-    return this.querySubject.observers.length > 0;
+    //The search component itself listens to changes. So > 1
+    return this.querySubject.observers.length > 1;
   }
 
   update(query: string){

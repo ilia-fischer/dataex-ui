@@ -5,6 +5,7 @@ import { UserService } from '../../core/user.service';
 import { TransactionService } from '../../shared/transaction.service';
 import { User } from '../../shared/user.model';
 import { Transaction } from '../../shared/transaction.model';
+import { AnalyticsService } from '../../shared/analytics.service';
 
 @Component({
   selector: 'trdx-profile',
@@ -15,16 +16,7 @@ export class ProfileComponent implements OnInit {
   user: User;
   transactions: Transaction[] = [];
   recentTransactions: Transaction[] = [];
-  numberOfTransactionsPerUser: any[] = [];
-  numberOfTransactionsPerDataset: any[] = [];
-  timeSeriesNumberTransactionsPerDataset: any[] = [];
   timeSeriesAggregateTransactionsNumConsumerNumDataset: any[] = []
-
-  //chart
-  view: any[] = [700, 400];
-  colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
-  };
 
   constructor(private userService: UserService, private transactionService: TransactionService) { }
 
@@ -35,83 +27,16 @@ export class ProfileComponent implements OnInit {
       .subscribe((transactions: Transaction[]) => {
         this.transactions = transactions;
         this.recentTransactions = transactions.slice(0, 8);
-        this.numberOfTransactionsPerUser = this.aggregateNumberOfTransactionsPerUser();
-        this.numberOfTransactionsPerDataset = this.aggregateNumberOfTransactionsPerDataset();
-        this.timeSeriesNumberTransactionsPerDataset = this.aggregateTimeSeriesNumberTransactionsPerDataset();
+        //bother with this?
         this.timeSeriesAggregateTransactionsNumConsumerNumDataset = this.aggregateTimeSeriesAggregateTransactionsNumConsumerNumDataset();
       });
   }
 
-  onChartSelect(event){
-    console.log(event);
-  }
-
-  private aggregateNumberOfTransactionsPerUser() : any[]{
-    let aggregateObj = this.transactions.reduce( (accumulator, curVal, i) => {
-      accumulator[curVal.consumer.consumerId] = accumulator[curVal.consumer.consumerId] || 0;
-      accumulator[curVal.consumer.consumerId]++;
-      return accumulator;
-    }, {} );
-
-    let aggregateArr = [];
-    for(let k in aggregateObj){
-      aggregateArr.push({
-          "name": k,
-          "value": aggregateObj[k]
-      });
-    }
-
-    return aggregateArr;
-  }
-
-  private aggregateNumberOfTransactionsPerDataset() : any[]{
-    let aggregateObj = this.transactions.reduce( (accumulator, curVal, i) => {
-      accumulator[curVal.datasetId] = accumulator[curVal.datasetId] || 0;
-      accumulator[curVal.datasetId]++;
-      return accumulator;
-    }, {} );
-
-    let aggregateArr = [];
-    for(let k in aggregateObj){
-      aggregateArr.push({
-          "name": k,
-          "value": aggregateObj[k]
-      });
-    }
-
-    return aggregateArr;
-  }
-
-  private aggregateTimeSeriesNumberTransactionsPerDataset(){
-    //{ "dataset1": { "Daystr": "transactionNumber", "Daystrq": "transactionNumber" }, "dataset2": { } };
-    let aggregateObj = this.transactions.reduce( (accumulator, curVal, i) => {
-      accumulator[curVal.datasetId] = accumulator[curVal.datasetId] || {};
-      const day = new Date(curVal.date).toDateString(); //removes time info
-      accumulator[curVal.datasetId][day] = accumulator[curVal.datasetId][day] || 0;
-      accumulator[curVal.datasetId][day]++;
-      return accumulator;
-    }, {} );
-
-    //[{"name": "Dataset", "series": [ {"name": "Some Date (DAY)","value": "numTrans"}, {"name": "Some Date (DAY)","value": 8940000 }]}]}}
-    let aggregateArr = [];
-    for(let ok in aggregateObj){
-      let obj = {
-        name: ok,
-        series: []
-      };
-      for(let sk in aggregateObj[ok]){
-        obj.series.push({
-          name: new Date(sk).toDateString(),
-          value: aggregateObj[ok][sk]
-        });
-      }
-      aggregateArr.push(obj);
-    }
-
-    return aggregateArr;
-  }
 
 
+
+
+  //Not sure if this logic works properly yet ...
   private aggregateTimeSeriesAggregateTransactionsNumConsumerNumDataset(){
     //{ "dataset1": { "Daystr": "transactionNumber", "Daystrq": "transactionNumber" }, "dataset2": { } };
     let customersPerDay = {};

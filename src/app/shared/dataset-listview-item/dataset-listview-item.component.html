@@ -7,7 +7,7 @@
       <ul class="col-9">
         <li *ngFor="let c of dataset.categories" class="badge badge-info">{{c}}</li>
       </ul>
-      <button *ngIf="!dataset.isConsumedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
+      <button *ngIf="!dataset.isConsumedByCurrentUser && !dataset.isProvidedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
     </div>
     <p class="dataset-url" *ngIf="dataset.isConsumedByCurrentUser">{{dataset.publicUrl}}</p>
   </div>
