@@ -14,14 +14,19 @@ import { AnalyticsService } from '../../shared/analytics.service';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  isConsumer: Boolean = false;
+  isProvider: Boolean = false;
   transactions: Transaction[] = [];
   recentTransactions: Transaction[] = [];
-  timeSeriesAggregateTransactionsNumConsumerNumDataset: any[] = []
+  timeSeriesAggregateTransactionsNumConsumerNumDataset: any[] = [];
 
   constructor(private userService: UserService, private transactionService: TransactionService) { }
 
   ngOnInit() {
     this.user = this.userService.getUser();
+    this.isConsumer = this.userService.isConsumer();
+    this.isProvider = this.userService.isProvider();
+
 
     this.transactionService.getAllTransactions()
       .subscribe((transactions: Transaction[]) => {
