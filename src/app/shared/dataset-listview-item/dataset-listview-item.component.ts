@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { SlicePipe } from '@angular/common';
 
 import { Dataset } from '../dataset.model';
 import { PurchaseDatasetModalComponent } from '../purchase-dataset-modal/purchase-dataset-modal.component';
