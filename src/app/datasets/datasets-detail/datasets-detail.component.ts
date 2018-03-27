@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import 'rxjs/add/operator/switchMap';
 
 import { DatasetsService } from '../../shared/dataset.service';
 import { Dataset } from '../../shared/dataset.model';
 import { UserService } from '../../core/user.service';
+import { PurchaseDatasetModalComponent } from '../../shared/purchase-dataset-modal/purchase-dataset-modal.component';
 
 @Component({
   selector: 'trdx-datasets-detail.',
@@ -12,6 +15,7 @@ import { UserService } from '../../core/user.service';
   styleUrls: ['./datasets-detail.component.scss']
 })
 export class DatasetsDetailComponent implements OnInit {
+  bsModalRef: BsModalRef;
   datasetId: string;
   dataset: Dataset = null;
   idNotFound: Boolean = false;
@@ -50,7 +54,7 @@ export class DatasetsDetailComponent implements OnInit {
 
   allDatasets: Dataset[];
 
-  constructor(private route: ActivatedRoute, private datasetService: DatasetsService, private router: Router, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private datasetService: DatasetsService, private router: Router, private userService: UserService, private modalService: BsModalService) { }
 
   ngOnInit() {
     this.route.params
@@ -114,11 +118,10 @@ export class DatasetsDetailComponent implements OnInit {
     }
 
     purchaseDataset(){
-    // const initialState = {
-    //   dataset: this.dataset
-    // };
-    // this.bsModalRef = this.modalService.show(PurchaseDatasetModalComponent, {initialState});
-
+      const initialState = {
+        dataset: this.dataset
+      };
+      this.bsModalRef = this.modalService.show(PurchaseDatasetModalComponent, {initialState});
     }
 
     onChartSelect(event){

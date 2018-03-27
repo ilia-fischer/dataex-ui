@@ -1,13 +1,13 @@
-<div class="card mt-3">
-  <div class="card-body">
+<div class="card mt-3 flex-fill">
+  <div class="card-body flex-fill">
     <a class="card-title" [routerLink]="['/datasets', dataset._id]">{{dataset.name}}</a>
     <p class="card-text">{{dataset.description}}</p>
     <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}/call</h6>
-    <div class="row">
-      <ul class="col-9">
-        <li *ngFor="let c of dataset.categories" class="badge badge-info">{{c}}</li>
-      </ul>
-      <button *ngIf="!dataset.isConsumedByCurrentUser && !dataset.isProvidedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
+    <ul class="tags">
+      <li *ngFor="let c of dataset.categories | slice:0:6" class="badge badge-info">{{c}}</li>
+    </ul>
+    <div class="row btn-buy-wrapper">
+      <button *ngIf="!dataset.isConsumedByCurrentUser && !dataset.isProvidedByCurrentUser" class="col-3 offset-9 btn btn-primary btn-buy" (click)="purchaseDataset()">Buy</button>
     </div>
     <p class="dataset-url" *ngIf="dataset.isConsumedByCurrentUser">{{dataset.publicUrl}}</p>
   </div>

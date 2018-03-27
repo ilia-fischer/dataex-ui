@@ -5,68 +5,63 @@
                 <a class="card-title">{{dataset.name}}</a>
                 <p class="card-text">{{dataset.description}}</p>
                 <h6 class="card-subtitle mb-2 text-muted">${{dataset.price}}/call</h6>
-                <div class="row">
-                    <ul class="col-9">
-                        <li *ngFor="let c of dataset.categories" class="badge badge-info">{{c}}</li>
-                    </ul>
-                    <button *ngIf="!dataset.isConsumedByCurrentUser" class="col-3 btn btn-primary" (click)="purchaseDataset()">Buy</button>
-                </div>
+                <ul class="tags">
+                    <li *ngFor="let c of dataset.categories" class="badge badge-info">{{c}}</li>
+                </ul>
+                <button *ngIf="!dataset.isConsumedByCurrentUser && !dataset.isProvidedByCurrentUser" class="col-3 btn btn-primary btn-buy" (click)="purchaseDataset()">Buy</button>
+                <p class="dataset-url" *ngIf="dataset.isConsumedByCurrentUser">{{dataset.publicUrl}}</p>
             </div>
         </div>
     </div>
     <div class="col-sm-8 flex-fill">
+
         <div class="card mt-3 flex-fill">
             <div class="card-body flex-fill">
                 <a class="card-title">Related Categories</a>
+                <ngx-charts-bar-horizontal
+                    *ngIf="dataset.categories.length!=0"
+                    [view]="view"
+                    [results]="single"
+                    xAxis=true
+                    yAxis=true
+                    showXAxisLabel=true
+                    showYAxisLabel=true
+                    xAxisLabel="Number of Datasets"
+                    yAxisLabel="Category"
+                    autoScale=true
+                    [showGridLines]=false
+                    [xAxisTickFormatting]="xAxisTickFormatting"
+                    (select)="onChartSelect($event)">
+                </ngx-charts-bar-horizontal>
             </div>
-            <div *ngIf="dataset.categories.length!=0">
-              <ngx-charts-bar-horizontal
-                [view]="view"
-                [results]="single"
-                xAxis=true
-                yAxis=true
-                showXAxisLabel=true
-                showYAxisLabel=true
-                xAxisLabel="Number of Datasets"
-                yAxisLabel="Category"
-                autoScale=true
-                [showGridLines]=false
-                [xAxisTickFormatting]="xAxisTickFormatting"
-                (select)="onChartSelect($event)">
-              </ngx-charts-bar-horizontal>
+        </div>
+
+        <div class="card mt-3 flex-fill">
+            <div class="card-body flex-fill">
+                <a class="card-title">Related Datasets</a>
+                <ngx-charts-tree-map
+                    *ngIf="relationsTreeMap.length!=0"
+                    [view]="view"
+                    [results]="relationsTreeMap"
+                    legend=true
+                    (select)="onSelectTreeMap($event)">
+                </ngx-charts-tree-map>
             </div>
         </div>
-    </div>
-    <div class="col-sm-4 flex-fill">
-      <div class="card mt-3 flex-fill">
-        <div class="card-body flex-fill">
-            <a class="card-title">Relations Overview</a>
+
+        <div class="card mt-3 flex-fill">
+            <div class="card-body flex-fill">
+                <a class="card-title">Relations Overview</a>
+                <ngx-charts-force-directed-graph
+                    autoScale=true
+                    [links]="graph.links"
+                    [nodes]="graph.nodes"
+                    [legend]="showLegend"
+                    (select)="onGraphSelect($event)">
+                </ngx-charts-force-directed-graph>
+            </div>
         </div>
-        <div class="chart-container">
-          <ngx-charts-force-directed-graph
-              autoScale=true
-              [links]="graph.links"
-              [nodes]="graph.nodes"
-              [legend]="showLegend"
-              (select)="onGraphSelect($event)">
-            </ngx-charts-force-directed-graph>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-8 flex-fill">
-      <div class="card mt-3 flex-fill">
-          <div class="card-body flex-fill">
-              <a class="card-title">Related Datasets</a>
-          </div>
-          <div *ngIf="relationsTreeMap.length!=0">
-            <ngx-charts-tree-map
-              [view]="view"
-              [results]="relationsTreeMap"
-              legend=true
-              (select)="onSelectTreeMap($event)">
-            </ngx-charts-tree-map>
-          </div>
-      </div>
+
     </div>
 </div>
 <div *ngIf="idNotFound">

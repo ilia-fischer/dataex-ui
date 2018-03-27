@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div *ngIf="!isConsumer" class="card">
     <div class="card-body">
       <h5 class="card-title">Transactions per Consumer</h5>
       <trdx-transactions-advanced-pie-chart
@@ -64,7 +64,7 @@
     </div>
   </div>
 
-  <div class="card">
+  <div *ngIf="!isConsumer" class="card">
     <div class="card-body">
       <h5 class="card-title">Transactions and Consumers per Dataset</h5>
       <ngx-charts-bubble-chart
