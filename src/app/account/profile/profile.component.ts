@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 
 import { UserService } from '../../core/user.service';
 import { TransactionService } from '../../shared/transaction.service';
@@ -14,6 +15,7 @@ import { AnalyticsService } from '../../shared/analytics.service';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  balance: number = 0;
   isConsumer: Boolean = false;
   isProvider: Boolean = false;
   transactions: Transaction[] = [];
@@ -27,6 +29,10 @@ export class ProfileComponent implements OnInit {
     this.isConsumer = this.userService.isConsumer();
     this.isProvider = this.userService.isProvider();
 
+    //'user' including balance is cached per login via localstorage. Get most recent info to update balance.
+    this.balance = this.user.balance;
+    this.userService.getCurrentUserInfoFromServer()
+      .subscribe((u: User) => this.balance = u.balance);
 
     this.transactionService.getAllTransactions()
       .subscribe((transactions: Transaction[]) => {
@@ -35,6 +41,8 @@ export class ProfileComponent implements OnInit {
         //bother with this?
         this.timeSeriesAggregateTransactionsNumConsumerNumDataset = this.aggregateTimeSeriesAggregateTransactionsNumConsumerNumDataset();
       });
+
+
   }
 
 

@@ -22,6 +22,10 @@ docker build -t dataex-ui .
 docker run -p 80:80 -d dataex-ui
 ```
 
+## Config:
+Point the UI to the correct API endpoint in the correct environment file. For Docker builds this is `src/envrionments/environment.prod.ts`. This should be the actual server name and not `localhost` unless the api is stting on the same box as the browser accessing it. The URL is called by the browser, not the machine hosting the code.
+
+
 ## Code Structure and Style
 
 Try to follow the [official Angular style guide](https://angular.io/guide/styleguide) as much as possible. Some Key points:

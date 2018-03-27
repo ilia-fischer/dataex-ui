@@ -88,4 +88,14 @@ export class UserService {
         this.authService.setToken(null);
     }
 
+    /* For Balance in Profile. Quick Hack */
+    getCurrentUserInfoFromServer() : Observable<User>{
+        return this.http.get(`${this.settingsService.apiUrl()}${UserService.CURRENT_USER_URI}`)
+            .map((response: Response) => {
+                console.log(response);
+                let balance = parseFloat(response['balance']);
+                return new User(response['_id'], response['name'], response['email'], [response['role']], balance == NaN ? 0 : balance);
+            });
+    }
+
 }
