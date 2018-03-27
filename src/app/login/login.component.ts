@@ -9,6 +9,8 @@ import { PageService } from '../core/page.service';
 })
 export class LoginComponent implements OnInit {
   invalidCredentialsError = false;
+  username;
+  password;
 
   constructor(private userService: UserService, private pageService: PageService) { }
 
